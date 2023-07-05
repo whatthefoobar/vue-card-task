@@ -3,7 +3,10 @@
     <div class="card-container">
       <div v-for="user in users" :key="user.id" class="card">
         <img :src="user.avatar" alt="User Avatar" class="avatar" />
-        <p>{{ user.first_name }} {{ user.last_name }}</p>
+        <div class="details">
+          <p>{{ user.first_name }} {{ user.last_name }}</p>
+          <a :href="'mailto:' + user.email">{{ user.email }}</a>
+        </div>
       </div>
     </div>
     <div v-if="pageCount > 1" class="pagination">
@@ -69,6 +72,21 @@ export default {
   height: 100px;
   border-radius: 50%;
   margin-bottom: 0.5rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details p {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.details a {
+  font-size: 1rem;
+  text-decoration: none;
 }
 
 .pagination {
